@@ -21,3 +21,20 @@ uses: actions/hello-world-docker-action@master
 with:
   who-to-greet: 'Mona the Octocat'
 ```
+
+# PERSONAL NOTES
+Using docker container as an action. Will specify 'docker' and the Dockerfile inside the action.yml spec.
+
+## Some limitation re Dockerfile
+- must be run by root
+- do not use WORKDIR (which assumed as the root repo folder)
+- The entry point in action.yml will override ENTRYPOINT in Dockerfile
+- The args in action.yml will override CMD in Dockerfile
+
+## Input / Output
+- the args in action.yml will be passed to containers as CMD
+- shell script in entry point can get the args as $1, $2, etc
+- output values need to be echo'ed to the stdout as 
+```
+::set-output name=value::
+```
