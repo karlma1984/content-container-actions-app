@@ -27,7 +27,7 @@ Using docker container as an action. Will specify 'docker' and the Dockerfile in
 
 ## Some limitation re Dockerfile
 - must be run by root
-- do not use WORKDIR (which assumed as the root repo folder)
+- do not use WORKDIR (which assumed as the root repo folder) - look at the run log to see how --workdir is being passed to docker run
 - The entry point in action.yml will override ENTRYPOINT in Dockerfile
 - The args in action.yml will override CMD in Dockerfile
 
@@ -38,3 +38,4 @@ Using docker container as an action. Will specify 'docker' and the Dockerfile in
 ```
 ::set-output name=value::
 ```
+look at entrypoint.sh on how it's being echo'ed out
